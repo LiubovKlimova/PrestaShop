@@ -7,14 +7,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.util.List;
+
 import static org.testng.Assert.assertEquals;
 
 public class Product_information_price extends TestBase {
 
 
     @Test
-    public void verifyName() throws Exception{
+    public void verifyName() throws Exception {
         driver.get("http://automationpractice.com/index.php");
         String expected2 = driver.findElement(By.xpath("//a[contains(text(), 'Faded Short')]")).getText();
         String expected = driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[1]/div/div[2]/div[1]/span")).getText();
@@ -23,14 +25,14 @@ public class Product_information_price extends TestBase {
 
         //String expected = driver.findElement(By.xpath("//span[contains(text(),'$16.51')]")).getText();
         String actual = driver.findElement(By.xpath("//*[@id='our_price_display']")).getText();
-        System.out.println("expected price: "+expected+" actualprice : "+actual);
+        System.out.println("expected price: " + expected + " actualprice : " + actual);
 
         assertEquals(expected, actual);
         Thread.sleep(1000);
 
         String actual2 = driver.findElement(By.xpath("//h1[contains(text(),'Faded Short Sleeve T-shirts')]")).getText();
 
-        System.out.println("expected name: "+ expected2+"actual name : "+ actual2);
+        System.out.println("expected name: " + expected2 + "actual name : " + actual2);
 //        Thread.sleep(1000);
         assertEquals(expected2, actual2);
     }
@@ -94,21 +96,22 @@ public class Product_information_price extends TestBase {
         System.out.println(actual2 + " vs default size: S");
 
 
-       // driver.get("http://automationpractice.com/index.php");
+        // driver.get("http://automationpractice.com/index.php");
         // STEP 11: Verify the name and price are as displayed on the home page
         String expectedName = "Faded Short Sleeve T-shirts";
         String actualName = driver.findElement(By.id("layer_cart_product_title")).getText();
         Thread.sleep(1000);
-        Assert.assertEquals(expectedName,actualName);
+        Assert.assertEquals(expectedName, actualName);
 
         String expectedPrice = "$16.51";
         String actualPrice = driver.findElement(By.id("layer_cart_product_price")).getText();
 //        Thread.sleep(1000);
-        Assert.assertEquals(expectedPrice,actualPrice);
+        Assert.assertEquals(expectedPrice, actualPrice);
 
         System.out.println("expectedName: " + expectedName + " actualName: " + actualName);
         System.out.println("expectedPrice: " + expectedPrice + " actualPrice: " + actualPrice);
     }
+
     @Test
     public void logInMyPersonalInfo() throws InterruptedException {
         driver.get("http://automationpractice.com/index.php");
@@ -116,7 +119,7 @@ public class Product_information_price extends TestBase {
 
         //STEP 1.Login using valid credentials
         driver.findElement(By.id("email")).sendKeys("luibovklimova@gmail.com");
-        driver.findElement(By.id("passwd")).sendKeys("jobjobjob"+ Keys.ENTER);
+        driver.findElement(By.id("passwd")).sendKeys("jobjobjob" + Keys.ENTER);
         //verify title
         String actualTitle = driver.getTitle();
         String expectedTitle = "My account";
@@ -124,7 +127,7 @@ public class Product_information_price extends TestBase {
 
         String actualName = driver.findElement(By.xpath("//span[contains(text(),'Anna Smith')]")).getText();
         String expectedName = "Anna Smith";
-        Assert.assertEquals(actualName,expectedName);
+        Assert.assertEquals(actualName, expectedName);
 
         //STEP2. Login my personal information
         driver.findElement(By.xpath("//span[contains(text(),'My personal information')]")).click();
@@ -143,8 +146,8 @@ public class Product_information_price extends TestBase {
         String fullNameTop = driver.findElement(By.xpath("//*[.='Anna Smith']//span")).getText();//Anna Smith
         String[] str = fullNameTop.split(" ");
 
-        Assert.assertEquals(firstNameExpected,str[0]);
-        Assert.assertEquals(lastNameExpected,str[1]);
+        Assert.assertEquals(firstNameExpected, str[0]);
+        Assert.assertEquals(lastNameExpected, str[1]);
 
         //click "Save" button
         driver.findElement(By.xpath("//*[.='Save']")).click();
@@ -152,7 +155,7 @@ public class Product_information_price extends TestBase {
         //verify password is incorrect
         String expectedMessage = "The password you entered is incorrect.";
         String actualMessage = driver.findElement(By.xpath("//*[.='The password you entered is incorrect.']")).getText();
-        Assert.assertEquals(expectedMessage,actualMessage);
+        Assert.assertEquals(expectedMessage, actualMessage);
         Thread.sleep(500);
 
         //click on back to your account
@@ -165,7 +168,7 @@ public class Product_information_price extends TestBase {
     }
 
     @Test
-    public void loginMyAddresses() throws Exception{
+    public void loginMyAddresses() throws Exception {
         driver.get("http://automationpractice.com/index.php");
         Thread.sleep(1000);
 
@@ -173,7 +176,7 @@ public class Product_information_price extends TestBase {
 
         //STEP 1.Login using valid credentials
         driver.findElement(By.id("email")).sendKeys("luibovklimova@gmail.com");
-        driver.findElement(By.id("passwd")).sendKeys("jobjobjob"+ Keys.ENTER);
+        driver.findElement(By.id("passwd")).sendKeys("jobjobjob" + Keys.ENTER);
         Thread.sleep(1000);
 
         //click on my addresses
@@ -185,7 +188,7 @@ public class Product_information_price extends TestBase {
 
         //verify name and last name with full name on top
 
-         String firstNameExpected = driver.findElement(By.xpath("//input[@class='is_required validate form-control']")).
+        String firstNameExpected = driver.findElement(By.xpath("//input[@class='is_required validate form-control']")).
                 getAttribute("value");
 
         String lastNameExpected = driver.findElement(By.xpath("//*[@id=\"lastname\"]")).
@@ -194,9 +197,9 @@ public class Product_information_price extends TestBase {
         String[] str = fullNameTop.split(" ");
         Thread.sleep(1000);
 
-        Assert.assertEquals(firstNameExpected,str[0]);
+        Assert.assertEquals(firstNameExpected, str[0]);
         Thread.sleep(1000);
-        Assert.assertEquals(lastNameExpected,str[1]);
+        Assert.assertEquals(lastNameExpected, str[1]);
 
         //delete first name
         WebElement firstName = driver.findElement(By.xpath("//input[@class='is_required validate form-control']"));
@@ -209,7 +212,7 @@ public class Product_information_price extends TestBase {
         String actualErrorMessage = driver.findElement(By.xpath("//*[@id=\"center_column\"]/div/div/ol/li[1]")).getText();
         String expectedErroeMessage = "firstname is required.";
         Thread.sleep(1000);
-        Assert.assertEquals(actualErrorMessage,expectedErroeMessage);
+        Assert.assertEquals(actualErrorMessage, expectedErroeMessage);
     }
 
 

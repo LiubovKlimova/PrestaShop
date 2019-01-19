@@ -7,17 +7,18 @@ import org.openqa.selenium.support.PageFactory;
 public class Data {
 
     Faker faker = new Faker();
-    public Data(){
-        PageFactory.initElements(Driver.getDriver(),this);
+
+    public Data() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    public String getFaker(String value){
-        String data ="";
-        switch (value){
-            case "firstName":
+    public String getFaker(String value) {
+        String data = "";
+        switch (value) {
+            case "first name":
                 data = faker.name().firstName();
-                break;
-            case  "lastName":
+
+            case "last name":
                 data = faker.name().lastName();
                 break;
             case "email":
@@ -26,7 +27,7 @@ public class Data {
             case "street":
                 data = faker.address().streetAddress();
                 break;
-            case "city" :
+            case "city":
                 data = faker.address().city();
                 break;
 

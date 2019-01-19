@@ -14,12 +14,32 @@ public class TestBase {
     protected Actions actions;
     protected SoftAssert softAssert;
     protected Random random = new Random();
+//
+//    Faker faker = new Faker();
+//
+//    public final String FAKE_EMAIL = faker.internet().emailAddress();
+//
+//    public final String FIRST_NAME = faker.name().firstName();
+//
+//    public final String LAST_NAME = faker.name().lastName();
+//
+//    public final String STREET = faker.address().streetAddress();
+//
+//    public final String CITY = faker.address().city();
+//
+//    public final String ZIP = faker.address().zipCode().substring(0, 5);
+//
+//    public final int STATE = random.nextInt(50) + 1;
+//
+//    public final String PASSWORD = faker.internet().password();
+//
+//    public final String PHONE_NUMBER = faker.phoneNumber().cellPhone();
+
 
     @BeforeMethod
-    public void setUpMethod(){
+    public void setUpMethod() {
 
         driver = Driver.getDriver();
-
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         actions = new Actions(driver);
         softAssert = new SoftAssert();
@@ -28,8 +48,9 @@ public class TestBase {
 
 
     }
+
     @AfterMethod
-    public void tearDownMethod(){
+    public void tearDownMethod() {
         Driver.closeDriver();
         softAssert.assertAll();
     }
