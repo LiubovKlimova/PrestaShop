@@ -59,23 +59,7 @@ public class RegistrationPage {
 
         Faker faker = new Faker();
 
-         String FAKE_EMAIL = faker.internet().emailAddress();
 
-         String FIRST_NAME = faker.name().firstName();
-
-         String LAST_NAME = faker.name().lastName();
-
-         String STREET = faker.address().streetAddress();
-
-         String CITY = faker.address().city();
-
-         String ZIP = faker.address().zipCode().substring(0, 5);
-
-         int STATE = random.nextInt(50) + 1;
-
-         String PASSWORD = faker.internet().password();
-
-         String PHONE_NUMBER = faker.phoneNumber().cellPhone();
 
         registerButton.click();
 

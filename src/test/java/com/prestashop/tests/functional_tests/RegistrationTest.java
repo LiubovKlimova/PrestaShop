@@ -82,13 +82,13 @@ public class RegistrationTest extends TestBase {
         WebElement selectState = driver.findElement(By.id("id_state"));//state
         Select list = new Select(selectState);
         Thread.sleep(500);
-        int STATE = random.nextInt(50)+1;
+        int STATE = random.nextInt(50) + 1;
         list.selectByIndex(STATE);
         String state_str = list.getFirstSelectedOption().getText();
 
         //postcode
         WebElement zip = driver.findElement(By.id("postcode"));//zip
-        String ZIP = faker.address().zipCode().substring(0,5);
+        String ZIP = faker.address().zipCode().substring(0, 5);
         zip.sendKeys(ZIP);
         Thread.sleep(500);
 
@@ -154,7 +154,7 @@ public class RegistrationTest extends TestBase {
         String address = (street2.concat(city2).concat(state).concat(zip2).concat(country)).
                 replace(",", "").replace(" ", "");
         System.out.println(address);
-        String expected = (STREET + CITY + state_str + ZIP + "United States").replace(" ","");
+        String expected = (STREET + CITY + state_str + ZIP + "United States").replace(" ", "");
         System.out.println(expected);
         Thread.sleep(500);
         Assert.assertEquals(address, expected.replace(" ", ""));
